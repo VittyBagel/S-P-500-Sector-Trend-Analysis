@@ -1,16 +1,51 @@
-# Ignore all data
-data/
+# ========================================
+# Data directory
+# ========================================
+# Ignore everything inside data/ by default
+data/**
 
-# But keep folder structure
-!data/
+# Keep the folder structure
 !data/raw/
 !data/processed/
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
-# Jupyter Notebook checkpoints
+# Ignore large CSV files (GitHub limit is 100MB)
+data/raw/*.csv
+data/processed/*.csv
+
+# ========================================
+# Python
+# ========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
 .ipynb_checkpoints/
 
-# Python cache
-__pycache__/
-*.pyc
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# ========================================
+# OS generated files
+# ========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+*.logs
+
+# Temporary files
+*.tmp
+*.temp
