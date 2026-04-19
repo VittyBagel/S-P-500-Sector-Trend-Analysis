@@ -34,8 +34,13 @@
    - Time series models generally had higher RMSE values due to difficulty capturing non-stationary behavior
    - However, RMSE alone is not a reliable indicator of true predictive performance in this context, especially given the noise and structural changes in financial data.
 
+### Predicted vs Actual Analysis
+   - The predicted vs actual plot shows that both models struggle to capture meaningful signal in sector-level returns. Random Forest predictions are heavily compressed around zero, indicating underfitting and an inability to respond to variation in actual returns. RNN predictions show slightly more spread but are unstable and include large outliers, suggesting sensitivity to noise and potential overfitting.
+   - Overall, neither model closely follows the ideal diagonal relationship (y = x), which indicates weak predictive alignment and low correlation between predicted and actual values. This suggests that both models are largely defaulting to predicting near-zero returns, rather than learning strong directional structure.
+
 ## Key Insights
    - Sector-level stock behavior is highly noisy and difficult to generalize using standard predictive models
+   - Most models collapse toward predicting near-zero returns, indicating weak predictive signal at the sector aggregation level
    - Some weak seasonal patterns were observed (e.g., monthly and weekly effects), but they are not stable enough for reliable forecasting
    - Thursdays tend to show slightly negative average returns, while Fridays show mild recoveries across multiple sectors
    - November appears to be a relatively strong month for positive returns across sectors, though this may reflect aggregation bias
@@ -43,8 +48,8 @@
 ## Limitations
    - High temporal bias due to limited 10-year window
    - Heavy reliance on log return aggregation reduces granularity of stock behavior
-   - Potential overfitting in Random Forest and RNN models
-   - RMSE may give a misleading sense of predictive strength
+   - Potential overfitting in Random Forest and RNN models, alongside underfitting tendencies in tree-based methods
+   - RMSE may give a misleading sense of predictive strength without visual or directional validation
 
 ## Recommendations
    - Avoid using these models for real trading decisions without further validation
